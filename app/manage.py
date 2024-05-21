@@ -3,6 +3,8 @@
 Command-line utility for administrative tasks.
 """
 import sys
+import os
+import unittest
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 
 def main():
@@ -15,9 +17,11 @@ def main():
 
     if command == 'runserver':
         run_server()
+    elif command == 'test':
+        run_tests()
     else:
         print(f"Unknown command: {command}")
-        print("Available commands: runserver")
+        print("Available commands: runserver, runtests")
         sys.exit(1)
 
 def run_server():
@@ -36,30 +40,17 @@ def run_server():
     print(f"Serving HTTP on 0.0.0.0 port {port} (http://0.0.0.0:{port}/) ...")
     httpd.serve_forever()
 
+def run_tests():
+    """Run unit tests."""
+    tests_dir = 'tests'  # Directory where your test files are located
+    loader = unittest.TestLoader()
+    suite = loader.discover(start_dir=tests_dir)
+
+    runner = unittest.TextTestRunner()
+    result = runner.run(suite)
+
+    if not result.wasSuccessful():
+        sys.exit(1)
+
 if __name__ == '__main__':
     main()
-
-
-
-#/usr/bin/env python
-# """Django's command-line utility for administrative tasks."""
-# import os
-# import sys
-
-
-# def main():
-#     """Run administrative tasks."""
-#     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
-#     try:
-#         from django.core.management import execute_from_command_line
-#     except ImportError as exc:
-#         raise ImportError(
-#             "Couldn't import Django. Are you sure it's installed and "
-#             "available on your PYTHONPATH environment variable? Did you "
-#             "forget to activate a virtual environment?"
-#         ) from exc
-#     execute_from_command_line(sys.argv)
-
-
-# if __name__ == '__main__':
-#     main()
