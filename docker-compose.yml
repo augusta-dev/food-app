@@ -2,23 +2,13 @@ version: "3.9"
 
 services:
   app:
-    build: 
+    build:
       context: .
       args:
         - DEV=true
     ports:
-      - "3000:3000"
+      - "8000:8000"
     volumes:
       - ./app:/app
-    command: 
-      ["sh", "-c", "python manage.py runserver 0.0.0.0:3000"]
-    
-  lint:
-    build: 
-      context: .
-      args:
-        - DEV=true
-    volumes:
-      - ./app:/app
-    command: 
-      ["sh", "-c", "flake8 ."]
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
