@@ -1,7 +1,7 @@
 import pymongo
 from pymongo import MongoClient
 
-cluster = MongoClient(("mongodb+srv://augustandev:<password>@meals.mg1iwwn.mongodb.net/?retryWrites=true&w=majority&appName=meals"))
+cluster = MongoClient(("mongodb+srv://augustandev:hur4Z9h91upZiPYS@meals.mg1iwwn.mongodb.net/?retryWrites=true&w=majority&appName=meals"))
 
 # client=pymongo.MongoClient('mongodb://192.168.3.251:8000/')
 
