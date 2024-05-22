@@ -42,7 +42,7 @@ def run_server():
 
 def run_tests():
     """Run unit tests."""
-    sys.exit(0) #Placeholder for now
+    # sys.exit(0) #Placeholder for now
     tests_dir = 'tests'  # Directory where your test files are located
     loader = unittest.TestLoader()
     suite = loader.discover(start_dir=tests_dir)
